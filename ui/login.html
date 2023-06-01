@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>登录</title>
     </head>
     <body>
@@ -13,12 +14,12 @@
                 <h1>Sign In</h1>
             </div>
             <div class="content">
-                账号: <input type="text" style="height: 25px;" placeholder="请输入账号" id="admin"><br><br>
-                密码: <input type="password" style="height: 25px" placeholder="请输入密码" id="password">
+                账号: <input id="admin" type="text" style="height: 25px;" placeholder="请输入账号" ><br><br>
+                密码: <input id="password" type="password" style="height: 25px" placeholder="请输入密码" >
             </div>
             <div class="footer">
                 <div class="check">
-                    <input type="checkbox" style="height: 25px; margin-right: 10px;" id="check">
+                    <input type="checkbox" id="check" style="height: 25px; margin-right: 10px;" >
                     <p>记住我</p>
                 </div>
                 <button class="btn" id="btn">登录</button>
