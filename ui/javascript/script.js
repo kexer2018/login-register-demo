@@ -23,9 +23,15 @@ btn.addEventListener('click', () => {
   let account = getAccount().trim()
   let password = getPassword().trim()
   if (!account || !password) {
-    alert('请正确输入')
+    alert('请正确输入!')
   }
-  //利用正则表达式判断输入是否正确
+
+  //利用正则表达式判断输入是否正确,检查密码格式
+  const passReg = /^(?=.*[A-Z])(?=.*[a-z])(?![0-9]+$)(?![^0-9]+$)(?![a-zA-Z]+$)(?![^a-zA-Z]+$)(?![a-zA-Z0-9]+$)[a-zA-Z0-9\\S]{8,16}$/
+  if(!passReg.test(password)){
+    alert('密码格式不正确!')
+  }
+
   const data = {
     account: account,
     password: password,
@@ -44,3 +50,6 @@ btn.addEventListener('click', () => {
     console.log(res)
   })
 })
+
+/* 用户点击了记住我的按钮，则下次登录时可以直接登录 */
+
