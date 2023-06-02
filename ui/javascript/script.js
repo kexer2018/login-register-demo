@@ -26,20 +26,21 @@ btn.addEventListener('click', () => {
     alert('请正确输入')
   }
   //利用正则表达式判断输入是否正确
+  const data = {
+    account: account,
+    password: password,
+    login_time: Date.now()
+  }
 
   //将页面的数据发送到到后端去
-  axios
-    .post('/userInfo', {
-      account: account,
-      password: password,
-      login_time: Date.now()
-    })
-    .then(function (response) {
-      console.log(response)
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
+  axios({
+    method: 'POST',
+    url: 'http://localhost:8010/userinfo',
+    data: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  }).then(res => {
+    console.log(res)
+  })
 })
-
-/* axios发送请求后端 */

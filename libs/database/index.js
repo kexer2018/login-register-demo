@@ -22,11 +22,12 @@ function SQLiteInit () {
 function createTable () {
   const sql = `CREATE TABLE IF NOT EXISTS 'userInfo'(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
+        account TEXT NOT NULL,
+        name TEXT ,
         password TEXT NOT NULL,
-        login_time TIMESTAMP NOT NULL DEFAULT (datetime('now')),
-        register_time TIMESTAMPTZ NOT NULL DEFAULT (datetime('now')),
-        quit_time TIMESTAMPTZ NOT NULL DEFAULT (datetime('now'))
+        login_time TIMESTAMP  DEFAULT (datetime('now')),
+        register_time TIMESTAMPTZ  DEFAULT (datetime('now')),
+        quit_time TIMESTAMPTZ  DEFAULT (datetime('now'))
     ) `
   db.run(sql)
 }
@@ -45,9 +46,10 @@ class User {
   }
   //新增一条用户数据
   static insert (data, cb) {
-    const sql = `INSERT INTO userInfo (name,password,login_time,register_time,quit_time) VALUES (?,?,?,?,?)`
+    const sql = `INSERT INTO userInfo (account,name,password,login_time,register_time,quit_time) VALUES (?,?,?,?,?,?)`
     db.run(
       sql,
+      data.account,
       data.name,
       data.password,
       data.login_time,
