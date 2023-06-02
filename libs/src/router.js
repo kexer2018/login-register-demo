@@ -38,12 +38,14 @@ router.get('/userinfo/:id', (req, res, next) => {
 /* 增加一个用户数据 */
 router.post('/userinfo', (req, res, next) => {
   let body = {
+    account: req.body.account,
     name: req.body.name,
     password: req.body.password,
     login_time: req.body.login_time,
     register_time: req.body.register_time,
     quit_time: req.body.quit_time
   }
+  console.log(body,'[body]')
   database.User.insert(body, (err, info) => {
     if (err) {
       return next(err)
